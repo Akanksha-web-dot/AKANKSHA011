@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student FAQ</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            text-align: center;
+        }
+
+        h1 {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+        }
+
+        .container {
+            width: 70%;
+            margin: auto;
+        }
+
+        .faq {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 8px gray;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .question {
+            font-weight: bold;
+        }
+
+        .answer {
+            display: none;
+            margin-top: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📚 Student FAQ - Common Problems</h1>
+
+<div class="container" id="faqContainer"></div>
+
+<script>
+
+/* FAQ DATA (University Student Problems) */
+const faqs = [
+    {q: "What is the minimum attendance required?", a: "Students must maintain at least 75% attendance."},
+    {q: "How can I check my exam results?", a: "Results are available in the Academics dashboard."},
+    {q: "Where can I find the exam timetable?", a: "Exam schedule is updated in the Academics section."},
+    {q: "How do I pay my fees?", a: "Fees can be paid through the student portal."},
+    {q: "What should I do if I have low attendance?", a: "You should contact your faculty or apply for condonation."},
+    {q: "How can I apply for leave?", a: "Submit your leave request through the student portal."},
+    {q: "Who should I contact for scholarship details?", a: "Visit the admin office for scholarship information."},
+    {q: "What to do if ID card is lost?", a: "Report immediately to the admin office."},
+    {q: "How to access library services?", a: "Library is open from 8 AM to 8 PM with student ID."},
+    {q: "Who to contact for WiFi issues?", a: "Contact IT support desk."},
+    {q: "How to get placement support?", a: "Reach out to the placement cell for guidance."},
+    {q: "What to do in case of emergency?", a: "Use the emergency support system or contact campus security."}
+];
+
+/* DISPLAY FAQ */
+const container = document.getElementById("faqContainer");
+
+faqs.forEach((faq, index) => {
+    let div = document.createElement("div");
+    div.className = "faq";
+
+    div.innerHTML = `
+        <div class="question">${faq.q}</div>
+        <div class="answer">${faq.a}</div>
+    `;
+
+    div.onclick = () => {
+        let ans = div.querySelector(".answer");
+        ans.style.display = ans.style.display === "block" ? "none" : "block";
+    };
+
+    container.appendChild(div);
+});
+
+</script>
+
+</body>
+</html>
