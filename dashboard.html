@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+
+<style>
+/* ===== YOUR CSS (Improved slightly) ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+/* BACKGROUNDS */
+.bg-academics {
+    background: url('622897960_1231611332447254_3498558795451323118_n') no-repeat center/cover;
+}
+
+.bg-chat {
+    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') no-repeat center/cover;
+}
+
+.bg-emergency {
+    background: url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b') no-repeat center/cover;
+}
+
+/* GLASS EFFECT */
+.glass {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 15px;
+    max-width: 900px;
+    backdrop-filter: blur(10px);
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.8);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: center;
+    background: rgba(0,0,0,0.7);
+}
+
+nav button {
+    margin: 10px;
+}
+
+/* CHAT */
+#chatbox {
+    height: 250px;
+    overflow-y: auto;
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* INPUT */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    background: #00c3ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button:hover {
+    background: #0099cc;
+}
+</style>
+
+<script>
+function showSection(section) {
+    document.getElementById("academics").style.display = "none";
+    document.getElementById("chat").style.display = "none";
+    document.getElementById("emergency").style.display = "none";
+
+    document.getElementById(section).style.display = "block";
+}
+
+// Simple chat demo
+function sendMessage() {
+    let input = document.getElementById("chatInput");
+    let chatbox = document.getElementById("chatbox");
+
+    if (input.value.trim() !== "") {
+        chatbox.innerHTML += "<p><b>You:</b> " + input.value + "</p>";
+        input.value = "";
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+}
+</script>
+
+</head>
+
+<body class="bg-academics">
+
+<header>🎓 Student Support Dashboard</header>
+
+<nav>
+    <button onclick="showSection('academics')">Academics</button>
+    <button onclick="showSection('chat')">Chat</button>
+    <button onclick="showSection('emergency')">Emergency</button>
+</nav>
+
+<!-- ACADEMICS -->
+<div id="academics" class="glass">
+    <h2>📚 Academics</h2>
+    <p>Check your assignments, notes, and progress.</p>
+
+    <ul>
+        <li>✔ Assignment Tracker</li>
+        <li>✔ Notes & Materials</li>
+        <li>✔ Exam Schedule</li>
+    </ul>
+</div>
+
+<!-- CHAT -->
+<div id="chat" class="glass" style="display:none;">
+    <h2>💬 Chat Support</h2>
+
+    <div id="chatbox"></div>
+
+    <input type="text" id="chatInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<!-- EMERGENCY -->
+<div id="emergency" class="glass" style="display:none;">
+    <h2>🚨 Emergency Help</h2>
+
+    <p><b>College Helpline:</b> +91 9876543210</p>
+    <p><b>Counsellor:</b> +91 9123456780</p>
+
+    <textarea placeholder="Describe your issue..."></textarea>
+    <button>Submit Request</button>
+</div>
+
+</body>
+</html>
