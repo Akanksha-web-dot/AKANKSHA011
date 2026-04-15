@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Console</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+        }
+        .box {
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>ADMIN PANEL - Suggestions</h1>
+
+<div class="box" id="output"></div>
+
+<script>
+function loadSuggestions() {
+    let suggestions = JSON.parse(localStorage.getItem("suggestions")) || [];
+    let output = document.getElementById("output");
+
+    if(suggestions.length === 0) {
+        output.innerHTML = "No suggestions yet.";
+    } else {
+        suggestions.forEach((s, i) => {
+            output.innerHTML += "<p><b>" + (i+1) + ".</b> " + s + "</p><hr>";
+        });
+    }
+}
+
+loadSuggestions();
+</script>
+
+</body>
+</html>
