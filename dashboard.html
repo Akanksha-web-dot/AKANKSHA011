@@ -3,159 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Dashboard</title>
+<title>Student Support Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-/* ===== YOUR CSS (Improved slightly) ===== */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f9;
 }
 
-/* BACKGROUNDS */
-.bg-academics {
-    background: url('622897960_1231611332447254_3498558795451323118_n') no-repeat center/cover;
+/* TOP BAR */
+.topbar{
+    background:#2e7d32;
+    color:white;
+    padding:15px;
+    font-size:22px;
 }
 
-.bg-chat {
-    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') no-repeat center/cover;
+/* SIDEBAR */
+.sidebar{
+    width:220px;
+    height:100vh;
+    background:#1b5e20;
+    position:fixed;
+    padding-top:20px;
 }
 
-.bg-emergency {
-    background: url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b') no-repeat center/cover;
+.sidebar a{
+    display:block;
+    color:white;
+    padding:15px;
+    text-decoration:none;
+    cursor:pointer;
 }
 
-/* GLASS EFFECT */
-.glass {
-    background: rgba(0,0,0,0.6);
-    padding: 20px;
-    margin: 30px auto;
-    border-radius: 15px;
-    max-width: 900px;
-    backdrop-filter: blur(10px);
+.sidebar a:hover{
+    background:#2e7d32;
 }
 
-/* HEADER */
-header {
-    text-align: center;
-    padding: 15px;
-    background: rgba(0,0,0,0.8);
-    font-size: 24px;
-    font-weight: bold;
+/* MAIN */
+.main{
+    margin-left:220px;
+    padding:20px;
 }
 
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: center;
-    background: rgba(0,0,0,0.7);
+/* ✅ HERO IMAGE FIXED */
+.hero{
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('AU campus.jpeg') no-repeat center center;
+    background-size: cover;
+    height:600px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:30px;
 }
 
-nav button {
-    margin: 10px;
+/* SECTIONS */
+.section{
+    display:none;
+    margin-top:20px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
 }
 
-/* CHAT */
-#chatbox {
-    height: 250px;
-    overflow-y: auto;
-    background: white;
-    color: black;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-/* INPUT */
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 8px;
-    border: none;
-}
-
-button {
-    padding: 10px 20px;
-    background: #00c3ff;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-button:hover {
-    background: #0099cc;
+/* FOOTER */
+.footer{
+    margin-top:20px;
+    padding:15px;
+    background:white;
+    border-radius:8px;
+    text-align:center;
 }
 </style>
-
-<script>
-function showSection(section) {
-    document.getElementById("academics").style.display = "none";
-    document.getElementById("chat").style.display = "none";
-    document.getElementById("emergency").style.display = "none";
-
-    document.getElementById(section).style.display = "block";
-}
-
-// Simple chat demo
-function sendMessage() {
-    let input = document.getElementById("chatInput");
-    let chatbox = document.getElementById("chatbox");
-
-    if (input.value.trim() !== "") {
-        chatbox.innerHTML += "<p><b>You:</b> " + input.value + "</p>";
-        input.value = "";
-        chatbox.scrollTop = chatbox.scrollHeight;
-    }
-}
-</script>
-
 </head>
 
-<body class="bg-academics">
+<body>
 
-<header>🎓 Student Support Dashboard</header>
+<div class="topbar">Student Support Services</div>
 
-<nav>
-    <button onclick="showSection('academics')">Academics</button>
-    <button onclick="showSection('chat')">Chat</button>
-    <button onclick="showSection('emergency')">Emergency</button>
-</nav>
-
-<!-- ACADEMICS -->
-<div id="academics" class="glass">
-    <h2>📚 Academics</h2>
-    <p>Check your assignments, notes, and progress.</p>
-
-    <ul>
-        <li>✔ Assignment Tracker</li>
-        <li>✔ Notes & Materials</li>
-        <li>✔ Exam Schedule</li>
-    </ul>
+<div class="sidebar">
+<a onclick="showSection('home')">🏠 Home</a>
+<a onclick="showSection('wellness')">🧠 Wellness</a>
+<a onclick="showSection('academics')">📊 Academics</a>
+<a onclick="showSection('faq')">💬 FAQs</a>
+<a onclick="showSection('emergency')">🚨 Emergency</a>
+<a onclick="showSection('admin')">👨‍💼 Admin Panel</a>
 </div>
 
-<!-- CHAT -->
-<div id="chat" class="glass" style="display:none;">
-    <h2>💬 Chat Support</h2>
+<div class="main">
 
-    <div id="chatbox"></div>
+<!-- HERO -->
+<div class="hero">
+WELCOME, STUDENT!
+</div>
 
-    <input type="text" id="chatInput" placeholder="Type your message...">
-    <button onclick="sendMessage()">Send</button>
+<!-- HOME -->
+<div id="home" class="section" style="display:block;">
+<h2>Student Support Portal</h2>
+<p>Access all services in one place.</p>
+</div>
+
+<!-- WELLNESS -->
+<div id="wellness" class="section">
+<h2>Wellness</h2>
+<p>Go to wellness page for tips.</p>
+<a href="wellness.html">Open Wellness Page</a>
+</div>
+
+<!-- ACADEMICS -->
+<div id="academics" class="section">
+<h2>Academics</h2>
+<a href="academics.html">Open Academic Dashboard</a>
+</div>
+
+<!-- FAQ -->
+<div id="faq" class="section">
+<h2>FAQs</h2>
+<a href="faq.html">Open FAQ Page</a>
 </div>
 
 <!-- EMERGENCY -->
-<div id="emergency" class="glass" style="display:none;">
-    <h2>🚨 Emergency Help</h2>
-
-    <p><b>College Helpline:</b> +91 9876543210</p>
-    <p><b>Counsellor:</b> +91 9123456780</p>
-
-    <textarea placeholder="Describe your issue..."></textarea>
-    <button>Submit Request</button>
+<div id="emergency" class="section">
+<h2>Emergency</h2>
+<a href="emergency.html">Open Emergency Contacts</a>
 </div>
+
+<!-- ADMIN -->
+<div id="admin" class="section">
+<h2>Admin Panel</h2>
+<a href="adminconsole.html">Open Admin Console</a>
+</div>
+
+<div class="footer">
+<strong>Alliance University</strong>
+</div>
+
+</div>
+
+<script>
+function showSection(id){
+    document.querySelectorAll('.section').forEach(sec=>sec.style.display='none');
+    document.getElementById(id).style.display='block';
+}
+</script>
 
 </body>
 </html>
